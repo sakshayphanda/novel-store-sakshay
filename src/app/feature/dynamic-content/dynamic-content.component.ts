@@ -20,6 +20,7 @@ import {
   Breakpoints,
 } from '@angular/cdk/layout';
 import { BooksContainerComponent } from '../books-container/books-container.component';
+import { BookSortingComponent } from '../book-sorting/book-sorting.component';
 
 @Component({
   selector: 'app-dynamic-content',
@@ -28,8 +29,8 @@ import { BooksContainerComponent } from '../books-container/books-container.comp
     CommonModule,
     SortPipe,
     BooksContainerComponent,
+    BookSortingComponent,
     MatButtonModule,
-    MatChipsModule,
     MatIconModule,
     MatTooltipModule,
   ],
@@ -38,11 +39,9 @@ import { BooksContainerComponent } from '../books-container/books-container.comp
 })
 export class DynamicContentComponent {
   dataService = inject(DataService);
-  originalAuthorData!: IAuthor;
   sortFunction!: Function | null;
   authorData!: IAuthor;
   unsubscribeSubject: Subject<boolean> = new Subject<boolean>();
-  defaultSelection: boolean = true;
   private breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe([Breakpoints.Tablet, Breakpoints.Handset])
@@ -52,16 +51,6 @@ export class DynamicContentComponent {
       .getData()
       .pipe(takeUntil(this.unsubscribeSubject))
       .subscribe((authorData) => (this.authorData = authorData));
-  }
-
-  sortBooksBy(sortBy: string, event: MatChipSelectionChange) {
-    if (!event.selected) {
-      this.sortFunction = null;
-      return;
-    }
-    if (sortBy === Book.title) this.sortFunction = sortByTitle(sortBy);
-    else if (sortBy === Book.publishDate)
-      this.sortFunction = sortByYear(sortBy);
   }
 
   ngOnDestroy() {

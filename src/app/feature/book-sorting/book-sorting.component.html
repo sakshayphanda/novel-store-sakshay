@@ -1,0 +1,15 @@
+<mat-chip-listbox aria-label="Fish selection">
+	<div style="display: flex; align-items: center">Sort by</div>
+
+	<mat-chip-option
+		[selected]="defaultSelection"
+		(click)="setSortFunction(null)"
+		>Default</mat-chip-option
+	>
+	<mat-chip-option (selectionChange)="sortBooksBy(Book.title, $event)"
+		>Name</mat-chip-option
+	>
+	<mat-chip-option (selectionChange)="sortBooksBy(Book.publishDate, $event)"
+		>Publish Date</mat-chip-option
+	>
+</mat-chip-listbox>

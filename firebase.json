@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "./dist/inspire-project-sakshay/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
