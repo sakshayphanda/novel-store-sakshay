@@ -60,7 +60,7 @@
 .book.mobile {
   height: 200px;
   .book-description {
-    padding: 20px;
+    padding: 12px;
     .publishdate {
       font-size: 13px;
     }
@@ -74,5 +74,10 @@ input {
   height: 30px;
   border: 1px solid #e8e8e8;
   width: 100%;
-  margin: 10px;
+  margin: 6px;
+}
+
+.book.mobile input {
+  height: 20px;
+  margin: 2px;
 }
