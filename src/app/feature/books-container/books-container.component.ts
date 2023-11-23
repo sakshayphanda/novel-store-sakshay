@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IAuthor, IBook } from '../../shared/interfaces/author.interface';
+import { BookSortingComponent } from '../book-sorting/book-sorting.component';
 
 @Component({
 	selector: 'app-books-container',
@@ -17,6 +18,8 @@ import { IAuthor, IBook } from '../../shared/interfaces/author.interface';
 		MatButtonModule,
 		MatIconModule,
 		MatTooltipModule,
+    BookSortingComponent
+
 	],
 	templateUrl: './books-container.component.html',
 	styleUrl: './books-container.component.scss',
@@ -24,7 +27,7 @@ import { IAuthor, IBook } from '../../shared/interfaces/author.interface';
 export class BooksContainerComponent {
 	@Input() authorData!: IAuthor;
 	@Input() isHandset!: boolean | null;
-	@Input() sortFunction!: Function | null;
+	sortFunction!: Function | null;
 	addBookContainer!: boolean;
 	newBook: IBook = {} as IBook;
 

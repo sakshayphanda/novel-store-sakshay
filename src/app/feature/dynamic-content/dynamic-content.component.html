@@ -9,10 +9,7 @@
     <h1 class="books-text">Books</h1>
   </div>
 
-  <app-book-sorting (sortFunction$)="sortFunction = $event"></app-book-sorting>
-
   <app-books-container
-    [sortFunction]="sortFunction"
     [authorData]="authorData"
     [isHandset]="isHandset$ | async"
   ></app-books-container>
