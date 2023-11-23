@@ -1,0 +1,63 @@
+<div class="book {{ isHandset ? 'mobile' : 'desktop' }}">
+  @if (!isEditBook && !addNew) {
+  <mat-icon class="book-delete" (click)="deleteBook(book)"
+    >delete</mat-icon
+  >
+  <mat-icon
+    class="book-edit"
+    (click)="isEditBook = true"
+    >edit</mat-icon
+  >
+  }
+  <div>
+    <img
+      class="book-image"
+      [src]="book.imageUrl"
+      onerror="this.src = 'https://www.freeiconspng.com/uploads/add-icon--endless-icons-21.png'"
+    />
+  </div>
+  <div class="book-description">
+    <div class="title">
+      @if (addNew || isEditBook) {
+      <input
+        #titleInput
+        placeholder="Enter Title"
+        [value]="book.title || ''"
+        (blur)="book.title = titleInput.value"
+      />
+      <input
+        #imgUrlInput
+        placeholder="Enter Image URl"
+        [value]="book.imageUrl || ''"
+        (blur)="book.imageUrl = imgUrlInput.value"
+      />
+
+      <input
+        #purchaseLinkInput
+        [value]="book.purchaseLink || ''"
+        placeholder="Enter Purchase Link"
+        (blur)="book.purchaseLink = purchaseLinkInput.value"
+      />
+      <input
+        #publishedDataInput
+        placeholder="Enter published date"
+        [value]="book.PublishDate || ''"
+        (blur)="book.PublishDate = publishedDataInput.value"
+      />
+      <div>
+        @if (addNew) {
+        <button mat-stroked-button (click)="addNewBook()">Add</button>
+        } @else if (isEditBook) {
+        <button mat-stroked-button (click)="updateBook()">Update</button>
+        <button mat-stroked-button (click)="isEditBook = false">Cancel</button>
+        }
+      </div>
+      } @else {
+      <div class="title">
+        <a [href]="book.purchaseLink" target="_blank">{{ book.title }}</a>
+      </div>
+      <div class="publishdate">Published Date - {{ book.PublishDate }}</div>
+      }
+    </div>
+  </div>
+</div>

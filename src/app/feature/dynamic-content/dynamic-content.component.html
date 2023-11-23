@@ -1,0 +1,32 @@
+@if (this.authorData) {
+<div
+  class="content-container {{ (isHandset$ | async) ? 'mobile' : 'desktop' }}"
+>
+  <div class="author">
+    <h3 class="author-name">{{ authorData.data.author }}</h3>
+    DOB: {{ authorData.data.birthday }}
+    <div>{{ authorData.data.birthPlace }}</div>
+    <h1 style="color: rgb(59, 93, 219)">Books</h1>
+  </div>
+
+  <mat-chip-listbox aria-label="Fish selection">
+    <div style="display: flex; align-items: center">Sort by</div>
+
+    <mat-chip-option [selected]="defaultSelection" (click)="sortFunction = null"
+      >Default</mat-chip-option
+    >
+    <mat-chip-option (selectionChange)="sortBooksBy('title', $event)"
+      >Name</mat-chip-option
+    >
+    <mat-chip-option (selectionChange)="sortBooksBy('PublishDate', $event)"
+      >Publish Date</mat-chip-option
+    >
+  </mat-chip-listbox>
+
+  <app-books-container
+    [sortFunction]="sortFunction"
+    [authorData]="authorData"
+    [isHandset] ="(isHandset$ | async)"
+  ></app-books-container>
+</div>
+}

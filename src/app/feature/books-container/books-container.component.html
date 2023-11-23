@@ -1,0 +1,26 @@
+<button
+  style="margin: 15px 0px"
+  matTooltip="add a new book"
+  (click)="addBookContainer = !addBookContainer"
+  mat-stroked-button
+>
+  <mat-icon>add</mat-icon>
+  Add a new Book
+</button>
+<div class="book-container {{ isHandset ? 'mobile' : 'desktop' }}">
+  @if (addBookContainer) {
+  <app-book
+    [book]="newBook"
+    [isHandset]="isHandset"
+    [addNew]="true"
+    (addNewBook$)="addNewBook($event)"
+  ></app-book>
+  } @for (book of authorData.data.books | sortBy: sortFunction; track $index) {
+  <app-book
+    [book]="book"
+    [isHandset]="isHandset"
+    (deleteBook$)="deleteBook($event)"
+    (updateBook$)="updateBook($event)"
+  ></app-book>
+  }
+</div>

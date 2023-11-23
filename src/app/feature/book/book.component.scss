@@ -1,0 +1,78 @@
+.book {
+  position: relative;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px rgb(234, 225, 225);
+  height: 400px;
+  display: flex;
+
+  &-delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: grey;
+    cursor: pointer;
+  }
+
+  &-edit {
+    position: absolute;
+    top: 5px;
+    right: 35px;
+    color: grey;
+    cursor: pointer;
+  }
+  &-image {
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    flex: 0.7;
+  }
+
+  &-description {
+    padding: 30px;
+    width: 100%;
+    .publishdate {
+      font-size: 18px;
+    }
+    .title {
+      color: black;
+      font-size: 34px;
+      box-sizing: border-box;
+      flex: 1;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+
+      a {
+        color: rgb(62, 61, 61);
+        text-decoration: none;
+        height: 60px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.book.mobile {
+  height: 200px;
+  .book-description {
+    padding: 20px;
+    .publishdate {
+      font-size: 13px;
+    }
+    .title {
+      color: black;
+      font-size: 22px;
+    }
+  }
+}
+input {
+  height: 30px;
+  border: 1px solid #e8e8e8;
+  width: 100%;
+  margin: 10px;
+}

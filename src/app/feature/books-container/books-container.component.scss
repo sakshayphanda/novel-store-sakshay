@@ -1,0 +1,16 @@
+
+.book-container {
+  display: grid;
+  gap: 30px;
+
+}
+
+.book-container.mobile {
+  grid-template-columns: 1fr;
+
+}
+
+.book-container.desktop {
+  grid-template-columns: 1fr 1fr;
+
+}
